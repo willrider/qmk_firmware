@@ -65,11 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //     ADJUST,  KC_ESC,  KC_LALT, KC_LGUI, EISU,    LOWER,   KC_SPC,  KC_SPC,  RAISE,   KANA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   //   ),
   [_QWERTY] = LAYOUT(
-      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_BSPC, KC_BSPC,    KC_NLCK,    KC_PSLS,    KC_PAST,    KC_PMNS,
-      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_VOLU, KC_MPLY,    KC_P7,      KC_P8,      KC_P9,      KC_PPLS,
-      KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_VOLD, KC_MPRV,    KC_P4,      KC_P5,      KC_P6,      KC_PPLS,
-      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC, ADJUST,  KC_MUTE, KC_MNXT,    KC_P1,      KC_P2,      KC_P3,      KC_PENT,
-      ADJUST,  KC_ESC,  KC_LALT, KC_LGUI, EISU,    LOWER,   KC_SPC,  RAISE,   KC_APP,  KC_CALC,    KC_P0,      KC_P0,      KC_PDOT,    KC_PENT
+      KC_PMNS,  KC_PAST, KC_PSLS,  KC_NUM,   KC_BSPC,    KC_BSPC,                      KC_BSPC, KC_BSPC,    KC_NUM,     KC_PSLS,    KC_PAST,    KC_PMNS,
+      KC_PPLS,  KC_P9,   KC_P8,    KC_P7,    KC_MPLY,    KC_VOLU,                      KC_VOLU, KC_MPLY,    KC_P7,      KC_P8,      KC_P9,      KC_PPLS,
+      KC_PPLS,  KC_P6,   KC_P5,    KC_P4,    KC_MPRV,    KC_VOLD,                      KC_VOLD, KC_MPRV,    KC_P4,      KC_P5,      KC_P6,      KC_PPLS,
+      KC_PENT,  KC_P3,   KC_P2,    KC_P1,    KC_MNXT,    KC_MUTE,  ADJUST, ADJUST,     KC_MUTE, KC_MNXT,    KC_P1,      KC_P2,      KC_P3,      KC_PENT,
+      KC_PENT,   KC_PDOT,  KC_P0,  KC_P0,  KC_CALC,       KC_APP,   RAISE,  RAISE,      KC_APP,  KC_CALC,    KC_P0,      KC_P0,      KC_PDOT,    KC_PENT
     ),
   /* Lower
    * ,-----------------------------------------.             ,-----------------------------------------.
@@ -106,10 +106,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_RAISE] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                   _______, _______, E_AIR,   E_500,   O_RAL,   O_LAS,
-      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      _______, _______, REINF,   RESUPP,  _______, _______,
-      _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     _______, _______, _______, _______, _______, _______,
-      KC_CAPS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  _______, _______, _______, _______, RAIL,    SPACK,   _______, _______,
+      O_LAS,   O_RAL,   E_500,   E_AIR,   _______, _______,                   _______, _______, E_AIR,   E_500,   O_RAL,   O_LAS,
+      _______, _______, RESUPP,  REINF,   _______, _______,                   _______, _______, REINF,   RESUPP,  _______, _______,
+      _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+      _______, _______, SPACK,   RAIL,    _______, _______,  _______, _______,_______, _______, RAIL,    SPACK,   _______, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
       ),
 
@@ -195,7 +195,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case E_AIR:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_RIGHT) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_RIGHT));
+            SEND_STRING(SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_RIGHT) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_RIGHT));
         } else {
             // when keycode QMKURL is released
         }
@@ -203,7 +203,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case E_500:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_RIGHT) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_DOWN));
+            SEND_STRING(SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_RIGHT) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_DOWN));
         } else {
             // when keycode QMKURL is released
         }
@@ -211,7 +211,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case O_RAL:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_RIGHT) SS_DELAY(100) SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_RIGHT));
+            SEND_STRING(SS_TAP(X_RIGHT) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_RIGHT));
         } else {
             // when keycode QMKURL is released
         }
@@ -219,7 +219,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case O_LAS:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_RIGHT) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_RIGHT) SS_DELAY(100) SS_TAP(KC_DOWN));
+            SEND_STRING(SS_TAP(X_RIGHT) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_RIGHT) SS_DELAY(100) SS_TAP(X_DOWN));
         } else {
             // when keycode QMKURL is released
         }
@@ -227,7 +227,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case REINF:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_RIGHT) SS_DELAY(100) SS_TAP(KC_LEFT) SS_DELAY(100) SS_TAP(KC_UP));
+            SEND_STRING(SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_RIGHT) SS_DELAY(100) SS_TAP(X_LEFT) SS_DELAY(100) SS_TAP(X_UP));
         } else {
             // when keycode QMKURL is released
         }
@@ -235,7 +235,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case RESUPP:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_RIGHT));
+            SEND_STRING(SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_RIGHT));
         } else {
             // when keycode QMKURL is released
         }
@@ -243,7 +243,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case RAIL:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_RIGHT) SS_DELAY(100) SS_TAP(KC_LEFT) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_LEFT) SS_DELAY(100) SS_TAP(KC_RIGHT));
+            SEND_STRING(SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_RIGHT) SS_DELAY(100) SS_TAP(X_LEFT) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_LEFT) SS_DELAY(100) SS_TAP(X_RIGHT));
         } else {
             // when keycode QMKURL is released
         }
@@ -251,7 +251,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SPACK:
       if (record->event.pressed) {
             // when keycode QMKURL is pressed
-            SEND_STRING(SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_LEFT) SS_DELAY(100) SS_TAP(KC_DOWN) SS_DELAY(100) SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_UP) SS_DELAY(100) SS_TAP(KC_DOWN));
+            SEND_STRING(SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_LEFT) SS_DELAY(100) SS_TAP(X_DOWN) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_UP) SS_DELAY(100) SS_TAP(X_DOWN));
         } else {
             // when keycode QMKURL is released
         }
