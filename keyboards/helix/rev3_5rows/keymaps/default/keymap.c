@@ -19,15 +19,15 @@
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
   _QWERTY = 0,
-  // _LOWER,
+  _LOWER,
   _RAISE,
-  // _ADJUST
+  _ADJUST
 };
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
   EISU = SAFE_RANGE,
-  // KANA,
+  KANA,
   ADJUST,
   RGBRST,
   E_AIR,
